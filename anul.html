@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Annuler une réservation</title>
+  <style>
+    body {
+      background-color: #ffe0ec;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      padding-top: 80px;
+      color: #880e4f;
+    }
+
+    h1 {
+      font-size: 42px;
+      color: #d81b60;
+    }
+
+    form {
+      background-color: #fce4ec;
+      padding: 25px;
+      border-radius: 15px;
+      border: 2px solid #f48fb1;
+      display: inline-block;
+      margin-top: 30px;
+    }
+
+    input[type="text"],
+    button {
+      width: 250px;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      border: 1px solid #f06292;
+    }
+
+    button {
+      background-color: #fb16a3;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #e306d4;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Annuler une réservation</h1>
+  <form onsubmit="annulerReservation(event)">
+    <label for="nom">Entrez votre nom :</label><br />
+    <input type="text" id="nom" required /><br />
+    <button type="submit">Vérifier la réservation</button>
+  </form>
+
+  <div id="resultat" class="result"></div>
+
+  <script>
+    // Exemple de base de données simulée dans le navigateur
+    let reservations = [
+      { nom: "malak", chambre: "Double", date: "2025-06-01" },
+      { nom: "jake", chambre: "Suite", date: "2025-06-10" }
+    ];
+
+    function annulerReservation(event) {
+      event.preventDefault();
+      const nom = document.getElementById("nom").value.toLowerCase().trim();
+      const resDiv = document.getElementById("resultat");
+      const reservation = reservations.find(r => r.nom === nom);
+
+      if (reservation) {
+        resDiv.innerHTML = `
+          <p><strong>Réservation trouvée :</strong></p>
+          <p>Nom : ${reservation.nom}</p>
+          <p>Chambre : ${reservation.chambre}</p>
+          <p>Date : ${reservation.date}</p>
+          <button onclick="confirmerAnnulation('${reservation.nom}')">Annuler</button>
+        `;
+      } else {
+        resDiv.innerHTML = `<p style="color:red;">Aucune réservation trouvée pour ce nom.</p>`;
+      }
+    }
+
+    function confirmerAnnulation(nom) {
+      reservations = reservations.filter(r => r.nom !== nom);
+      document.getElementById("resultat").innerHTML = `<p style="color:green;">Réservation annulée avec succès.</p>`;
+    }
+  </script>
+</body>
+</html>

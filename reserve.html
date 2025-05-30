@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Réservation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8a1ba; /* light pink background */
+      text-align: center;
+      padding-top: 50px;
+    }
+    h1 {
+      color: #f532ee; 
+    }
+    form {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #f875f8;
+      border-radius: 10px;
+      background-color: #95e1f6; /* light blue form background */
+    }
+    input[type="text"],
+    input[type="date"],
+    select {
+      width: 200px;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #e926ed;
+    }
+    input[type="submit"] {
+      background-color: #eb59e6; /* steel blue */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #eb60af; /* dark cyan on hover */
+    }
+  </style>
+</head>
+<body>
+  <h1>Formulaire de Réservation</h1>
+  <form action="/reserver" method="post">
+    Nom: <input type="text" name="nom" required /><br /><br />
+    Type de chambre:
+    <select name="type" required>
+      <option value="Single">Single</option>
+      <option value="Double">Double</option>
+      <option value="Suite">Suite</option>
+    </select><br /><br />
+    <
+    Date: <input type="date" name="date" required /><br /><br />
+Nombre d'enfants : <input type="number" name="nb_enfants" min="0" required /><br /><br />
+    Code promo: <input type="text" name="code_promo" /><br /><br />
+    <label for="activites">Activités:</label><br />
+
+    <input type="checkbox" name="activites" value="Piscine"> Piscine (50 MAD)<br />
+    <input type="checkbox" name="activites" value="Spa"> Spa (120 MAD)<br />
+    <input type="checkbox" name="activites" value="Excursion"> Excursion (200 MAD)<br />
+    <input type="checkbox" name="activites" value="Nourriture"> Nourriture (150 MAD)<br /><br />
+    
+    
+  </form>
+  <br>
+ <a href="conf.htm" class="btn">Réserver</a>
+<a href="index.html" class="btn">Retour à l'accueil</a>
+
+<style>
+  .btn {
+    display: inline-block;
+    background-color: #db34ae;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .btn:hover {
+    background-color: #f923bd;
+    transform: scale(1.05);
+  }
+</style>
+
+
+</body>
+</html>
+<!-- This HTML code creates a reservation form for a hotel, allowing users to input their name, select a room type, and choose a date for their stay. The form submits the data to the "/reserver" endpoint using the POST method. The page is styled with CSS to have a light pink background, centered text, and a visually appealing form layout. -->
